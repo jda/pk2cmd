@@ -16,6 +16,10 @@
 // DISTRIBUTION OF THIS SOFTWARE OR ITS DERIVATIVES.
 //
 //---------------------------------------------------------------------------
+
+// Default path to device file
+#define DEVFILE "/usr/share/pk2/PK2DeviceFile.dat"
+
 #include "stdafx.h"
 #include "stdlib.h"
 #include "cmd_app.h"
@@ -84,13 +88,9 @@ void Ccmd_app::PK2_CMD_Entry(int argc, _TCHAR* argv[])
 		return;
 	}
 	else
-	{ // no -B, check PATH
-		_tsearchenv_s("PK2DeviceFile.dat", "PATH", tempString);
-		if (_tcslen(tempString) < 17)
-		{
-			_tcsncpy_s(tempString, "PK2DeviceFile.dat", 17);
-		}
-	}
+	{ // no -B, use default dir
+    _tcsncpy_s(tempString, DEVFILE, 33);
+  }
 	if (!PicFuncs.ReadDeviceFile(tempString))
 	{
 		printf("PK2DeviceFile.dat device file not found.\n");
