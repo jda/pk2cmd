@@ -89,7 +89,7 @@ void Ccmd_app::PK2_CMD_Entry(int argc, _TCHAR* argv[])
 	}
 	else
 	{ // no -B, use default dir
-    _tcsncpy_s(tempString, DEVFILE, 33);
+    _tcsncpy_s(tempString, DEVFILE, 255);
   }
 	if (!PicFuncs.ReadDeviceFile(tempString))
 	{
