@@ -52,17 +52,6 @@ endif
 ifeq ($(TARGET),freebsd)
 CFLAGS=$(OPTS) -I$(LIBUSB)/include -DCLAIM_USB
 endif
-ifeq ($(TARGET),mac104)
-CFLAGS=$(OPTS) -I$(LIBUSB)/include -DDARWIN -DMACOSX_HID
-OBJS=cmd_app.o DeviceData.o DeviceFile.o ImportExportHex.o PICkitFunctions.o PIC32PE.o Pk2BootLoader.o pk2cmd.o stdafx.o pk2usbcommon.o pk2usbmacosx.o P24F_PE.o dsP33_PE.o strnatcmp.o
-LDFLAGS=-framework IOKit -framework CoreFoundation
-endif
-ifeq ($(TARGET),mac105)
-CFLAGS=$(OPTS) -I$(LIBUSB)/include -DDARWIN -DMACOSX_HID -DMACOSX105
-OBJS=cmd_app.o DeviceData.o DeviceFile.o ImportExportHex.o PICkitFunctions.o PIC32PE.o Pk2BootLoader.o pk2cmd.o stdafx.o pk2usbcommon.o pk2usbmacosx.o P24F_PE.o dsP33_PE.o strnatcmp.o
-LDFLAGS=-framework IOKit -framework CoreFoundation
-endif
-
 .PHONY: target
 
 all: target $(APP)
